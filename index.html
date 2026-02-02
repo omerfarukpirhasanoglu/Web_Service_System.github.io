@@ -1,158 +1,165 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta name="description" content="A website belonging to Ömer Faruk Pirhasanoğlu" >
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ömer Faruk Pirhasanoğlu - CV</title>
+    <title>Model Arayüzü</title>
     <style>
+        /* Minimalist Tasarım */
         body {
-            font-family:Arial, Helvetica, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             margin: 0;
-            padding: 0;
-            background-color: #5e7f8f;
+            background-color: #f4f4f9;
             color: #333;
         }
 
         .container {
-            width: 80%;
-            margin: 20px auto;
-            background-color: #f4f4f4;
-            padding: 20px;
-            border-radius: 4px;
-        }
-
-        h1, h2 {
-            color: #2e3a59;
-        }
-
-        .isim {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             text-align: center;
-            margin-bottom: 20px;
+            width: 300px;
         }
 
-        .isim h1 {
-            font-size: 32px;
-            margin: 0;
+        h2 { margin-bottom: 1.5rem; font-weight: 600; }
+
+        /* Dosya Yükleme Alanı */
+        input[type="file"] {
+            display: none; /* Varsayılan çirkin butonu gizle */
         }
 
-        .isim h2 {
-            font-size: 18px;
-            color: #555;
+        .custom-file-upload {
+            border: 2px dashed #ccc;
+            display: inline-block;
+            padding: 12px 24px;
+            cursor: pointer;
+            border-radius: 8px;
+            width: 100%;
+            box-sizing: border-box;
+            transition: all 0.3s;
+            margin-bottom: 1rem;
+        }
+
+        .custom-file-upload:hover {
+            border-color: #4CAF50;
+            background-color: #f9fff9;
+        }
+
+        /* Analiz Butonu */
+        button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        button:hover { background-color: #555; }
+        button:disabled { background-color: #ccc; cursor: not-allowed; }
+
+        /* Sonuç Alanı */
+        #result {
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            min-height: 24px;
         }
         
-        .bölüm_h {
-            padding-left: 20px;
-            padding-right: 20px;
-            font-weight: 500;
-            background-color: #92b1cf;
-            color: #2e3a59;
-            margin-top: 20px;
-            display:inline-block ;
-            border-radius: 10px;
-        }
-
-        .bilgiler {
+        .preview-img {
+            max-width: 100%;
+            border-radius: 8px;
             margin-top: 10px;
-        }
-
-        .skiller {
-            list-style: none;
-            padding: 0;
-        }
-
-        .skiller li {
-            margin-bottom: 5px;
-        }
-
-        .skiller li::before {
-            content: "•";
-            color: #2e3a59;
-            margin-right: 10px;
-        }
-
-        .iletisim {
-            margin-top: 10px;
-            padding: 0;
-            list-style-type: none;
+            display: none;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <div class="isim">
-            <h1>Ömer Faruk Pirhasanoğlu</h1>
-            <h2>Student of Computer Engineering - Karabuk University</h2>
-        </div>
+        <h2>Görüntü Analizi</h2>
+        
+        <label for="file-upload" class="custom-file-upload">
+            📷 Resim Seç / Çek
+        </label>
+        <input id="file-upload" type="file" accept="image/*" onchange="previewImage(event)"/>
+        
+        <img id="preview" class="preview-img" alt="Önizleme">
 
-        <img src="https://yt3.googleusercontent.com/6EpLSRxlFheGb0zwradE3qbs78V5wQz2dg52zMxqFKqCb1dOqmI_tVdGIzX1BtN_g_rL4TfJ=s160-c-k-c0x00ffffff-no-rj" alt="image">
-
-        <div class="bilgi_bölümü">
-            <h2 class="bölüm_h">Communication info</h2>
-            <ul class="iletisim">
-                <li>Phone: 552 534 5097</li>
-                <li>E-Mail: omerpirhasanoglu@gmail.com</li>
-                
-            </ul>
-        </div>
-
-        <div class="bilgi_bölümü">
-            <h2 class="bölüm_h">Education</h2>
-            <div class="bilgiler">
-                <p>Karabuk University, Computer Engineering, 2.Grade</p>
-                <p>GPA: 3.00/4.00</p>
-            </div>
-        </div>
-
-        <div class="bilgi_bölümü">
-            <h2 class="bölüm_h">Skills</h2>
-            <div class="bilgiler">
-                <ul class="skiller">
-                    <li>C        (fairly well)</li>
-                    <li>Java     (fairly well)</li>
-                    <li>Python   (reasonably)</li>
-                    <li>SQL      (reasonably)</li>
-                    <li>HTML,CSS (reasonably)</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="bilgi_bölümü">
-            <h2 class="bölüm_h">About Me</h2>
-            <div class="bilgiler">
-                 <p>
-                    I’m a computer engineering student with a strong passion for artificial intelligence. 
-                    I’m focused on learning new technologies and applying them through hands-on projects. 
-                    Currently working with Python and core AI libraries, I’m building my skills in data science and deep learning.
-                    I see AI not just as a tool, but as a means to solve real-world problems and create meaningful social impact. 
-                    My goal is to contribute to AI-driven solutions in fields like healthcare, education, and sustainability.
-                    I’m a developer in the making—curious, purpose-driven, and committed to using technology responsibly.
-                 </p>
-            </div>
-        </div>
-
-        <div class="bilgi_bölümü">
-            <h2 class="bölüm_h">Goals</h2>
-            <div class="bilgiler">
-                <p>
-                    improving myself and my skills in artificial intelligence.
-                </p>
-            </div>
-        </div>
-
-        <div class="bilgi_bölümü">
-            <h2 class="bölüm_h">Certificates</h2>
-            <div class="bilgiler">
-                <p>I have certificates from various events and sectoral meetings.</p>
-                <ul>
-                    <li> <a href="https://globallycheck.com/CertificateRepo/ISH6E88F50C.jpg">Click For Certificate</a> </li>
-                    <li> <a href="https://globallycheck.com/CertificateRepo/CG82BBA101F.jpg">Click For Certificate</a> </li>
-                    <li> <a href="https://globallycheck.com/CertificateRepo/TV6C2030EEC.jpg">Click For Certificate</a> </li>
-                </ul>
-            </div>
-        </div>
+        <button onclick="analyzeImage()" id="analyzeBtn">Analiz Et</button>
+        
+        <div id="result">Sonuç bekleniyor...</div>
     </div>
+
+    <script>
+        const API_URL = "http://127.0.0.1:8000/predict"; // FastAPI adresin
+
+        // 1. Resmi Önizleme Fonksiyonu
+        function previewImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.getElementById('preview');
+                    img.src = e.target.result;
+                    img.style.display = 'block';
+                    document.getElementById('result').innerText = "Hazır.";
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // 2. API'ye Gönderme Fonksiyonu
+        async function analyzeImage() {
+            const fileInput = document.getElementById('file-upload');
+            const resultDiv = document.getElementById('result');
+            const btn = document.getElementById('analyzeBtn');
+
+            if (fileInput.files.length === 0) {
+                resultDiv.innerText = "Lütfen önce bir resim seçin.";
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("file", fileInput.files[0]); // Backend'deki parametre ismi 'file' olmalı
+
+            // Yükleniyor durumu
+            btn.disabled = true;
+            btn.innerText = "Analiz ediliyor...";
+            resultDiv.innerText = "⏳";
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error("Sunucu hatası: " + response.statusText);
+                }
+
+                const data = await response.json();
+                
+                // Backend'den dönen JSON formatına göre burayı düzenleyebilirsin
+                // Örnek: {"prediction": "Kedi", "confidence": 0.98}
+                resultDiv.innerText = `Sonuç: ${data.prediction || JSON.stringify(data)}`;
+
+            } catch (error) {
+                console.error("Hata:", error);
+                resultDiv.innerText = "Bağlantı hatası oluştu.";
+            } finally {
+                btn.disabled = false;
+                btn.innerText = "Analiz Et";
+            }
+        }
+    </script>
 </body>
 </html>
-
