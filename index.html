@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Model Arayüzü</title>
     <style>
-        /* Minimalist Tasarım */
+        
         body {
             font-family: 'Segoe UI', sans-serif;
             display: flex;
@@ -27,10 +27,9 @@
         }
 
         h2 { margin-bottom: 1.5rem; font-weight: 600; }
-
-        /* Dosya Yükleme Alanı */
+        
         input[type="file"] {
-            display: none; /* Varsayılan çirkin butonu gizle */
+            display: none; 
         }
 
         .custom-file-upload {
@@ -49,8 +48,7 @@
             border-color: #4CAF50;
             background-color: #f9fff9;
         }
-
-        /* Analiz Butonu */
+        
         button {
             background-color: #333;
             color: white;
@@ -65,8 +63,7 @@
 
         button:hover { background-color: #555; }
         button:disabled { background-color: #ccc; cursor: not-allowed; }
-
-        /* Sonuç Alanı */
+        
         #result {
             margin-top: 1.5rem;
             font-size: 1.1rem;
@@ -100,9 +97,8 @@
     </div>
 
     <script>
-        const API_URL = "http://127.0.0.1:8000/predict"; // FastAPI adresin
+        const API_URL = "http://127.0.0.1:8000/predict"; 
 
-        // 1. Resmi Önizleme Fonksiyonu
         function previewImage(event) {
             const file = event.target.files[0];
             if (file) {
@@ -117,7 +113,6 @@
             }
         }
 
-        // 2. API'ye Gönderme Fonksiyonu
         async function analyzeImage() {
             const fileInput = document.getElementById('file-upload');
             const resultDiv = document.getElementById('result');
@@ -129,9 +124,8 @@
             }
 
             const formData = new FormData();
-            formData.append("file", fileInput.files[0]); // Backend'deki parametre ismi 'file' olmalı
+            formData.append("file", fileInput.files[0]); 
 
-            // Yükleniyor durumu
             btn.disabled = true;
             btn.innerText = "Analiz ediliyor...";
             resultDiv.innerText = "⏳";
@@ -147,9 +141,7 @@
                 }
 
                 const data = await response.json();
-                
-                // Backend'den dönen JSON formatına göre burayı düzenleyebilirsin
-                // Örnek: {"prediction": "Kedi", "confidence": 0.98}
+                }
                 resultDiv.innerText = `Sonuç: ${data.prediction || JSON.stringify(data)}`;
 
             } catch (error) {
@@ -163,3 +155,5 @@
     </script>
 </body>
 </html>
+
+
